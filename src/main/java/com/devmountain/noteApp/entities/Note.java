@@ -1,5 +1,6 @@
 package com.devmountain.noteApp.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,19 +20,9 @@ public class Note {
     @Column(columnDefinition = "text")
     private String body;
 
-    public long getId() {
-        return id;
-    }
+    @ManyToOne
+    @JsonBackReference
+    private User user;
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
 }
